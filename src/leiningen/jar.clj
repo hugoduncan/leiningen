@@ -195,7 +195,8 @@
 (def whitelist-keys
   "Project keys which don't affect the production of the jar should be
 propagated to the compilation phase and not stripped out."
-  [:offline? :local-repo :certificates :warn-on-reflection :mirrors])
+  [:offline? :local-repo :certificates :warn-on-reflection :mirrors
+   :source-paths :resource-paths :cljsbuild :cljx])
 
 (defn- retain-whitelisted-keys
   "Retains the whitelisted keys from the original map in the new one."
