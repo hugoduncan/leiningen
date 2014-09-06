@@ -637,8 +637,7 @@
 
 (defn- read-plugin-profiles [project]
   (let [p (for [[plugin version] (:plugins project)
-                :let [plugin-name (if (= (name plugin) (str (namespace plugin)))
-                                    (name plugin) plugin)
+                :let [plugin-name (s/replace (name plugin) #"lein-" "")
                       profiles (io/resource (format "%s/profiles.clj" plugin-name))]
                 :when profiles]
             (for [[local-name profile] (read-string (slurp profiles))]
